@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Editar Paciente</h2>
+
+<form method="POST">
+    Nome: 
+    <input type="text" name="nome" value="{{ paciente.nome }}" required><br><br>
+
+    Data de Nascimento:
+    <input type="date" name="data_nascimento" value="{{ paciente.data_nascimento }}"><br><br>
+
+    Contato:
+    <input type="text" name="contato" value="{{ paciente.contato }}"><br><br>
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<a href="{{ url_for('listar_pacientes') }}">Voltar</a>
+{% endblock %}

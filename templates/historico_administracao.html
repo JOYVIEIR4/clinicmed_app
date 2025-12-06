@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Histórico de Administrações</h2>
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Paciente</th>
+                <th>Medicamento</th>
+                <th>Dose Aplicada</th>
+                <th>Data da Aplicação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for adm in historico %}
+            <tr>
+                <td>{{ adm.paciente }}</td>
+                <td>{{ adm.medicamento }}</td>
+                <td>{{ adm.dose_aplicada }}</td>
+                <td>{{ adm.data_aplicacao }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">Nenhuma administração registrada.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="{{ url_for('listar_prescricao') }}" class="btn btn-primary">Voltar</a>
+</div>
+{% endblock %}
+

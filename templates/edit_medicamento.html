@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Editar Medicamento</h2>
+
+<form method="POST">
+    Nome: 
+    <input type="text" name="nome" value="{{ medicamento.nome }}" required><br><br>
+
+    via:
+    <input type="text" name="via_administracao" value="{{ medicamento.via_administracao }}"><br><br>
+
+    Descricao:
+    <input type="text" name="desc_medicamento" value="{{ medicamento.desc_medicamento }}"><br><br>
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<a href="{{ url_for('listar_medicamento') }}">Voltar</a>
+{% endblock %}

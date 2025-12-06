@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Medicamentos</h2>
+
+<a href="{{ url_for('adicionar_medicamento') }}" class="btn-cadastro">
+    <i class="bi bi-noise-reduction"></i> Cadastrar Medicamento
+</a>
+
+
+<table class="tabela-prescricao">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Via</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for p in medicamento %}
+    <tr>
+        <td>{{ p.id_medicamento }}</td>
+        <td>{{ p.nome }}</td>
+        <td>{{ p.via_administracao }}</td>
+        <td>{{ p.desc_medicamento }}</td>
+        <td>
+
+            <!-- Editar -->
+            <a href="{{ url_for('edit_medicamento', id=p.id_medicamento) }}"
+                class="btn btn-edit">
+                Editar <i class="bi bi-clipboard-plus"></i>
+            </a>
+
+            <!-- Excluir -->
+            <form action="{{ url_for('deletar_medicamento', id=p.id_medicamento) }}" 
+                  method="POST" style="display:inline;">
+                <button class="btn btn-danger"
+                    onclick="return confirm('Excluir este medicamento?')">
+                    Excluir <i class="bi bi-trash"></i>
+                </button>
+            </form>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

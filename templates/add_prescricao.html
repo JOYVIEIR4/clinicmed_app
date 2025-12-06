@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Cadastrar Prescrição</h2>
+
+<form method="POST">
+    Paciente: <input type="text" name="id_paciente" required><br><br>
+    Profissional: <input type="text" name="id_profissional" required><br><br>
+    Medicamento: <input type="text" name="id_medicamento" required><br><br>
+
+    
+    Posologia: <input type="text" name="dosagem_prescricao" required><br><br>
+    Inicio_Precriscao <input type="date" name="dt_inicio_prescricao" required><br><br>
+    Fim_Prescricao: <input type="date" name="dt_fim_prescricao"><br><br>
+    Observação: <input type="text" name="observacoes"><br><br>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{{ url_for('listar_prescricao') }}">Voltar</a>
+{% endblock %}

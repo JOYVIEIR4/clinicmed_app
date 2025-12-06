@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Editar Prescrição</h2>
+
+<form method="POST">
+    Paciente: 
+    <input type="text" name="paciente" value="{{ prescricao.id_paciente }}" required><br><br>
+
+    Profissional: 
+    <input type="text" name="profissional" value="{{ prescricao.id_profissional }}" required><br><br>
+
+    Medicamento: 
+    <input type="text" name="medicamento" value="{{ prescricao.id_medicamento }}" required><br><br>
+
+    Posologia: 
+    <input type="text" name="posologia" value="{{ prescricao.dosagem_prescricao }}" required><br><br>
+
+    inicio da Prescrição:
+    <input type="date" name="inicio" value="{{ prescricao.dt_inicio_prescricao }}"><br><br>
+
+    
+    Fim da Prescrição:
+    <input type="date" name="fim" value="{{ prescricao.dt_fim_prescricao }}"><br><br>
+
+    Observação:
+    <input type="text" name="observação" value="{{ prescricao.observacoes }}"><br><br>
+
+    <button type="submit">Salvar Alterações</button>
+</form>
+
+<a href="{{ url_for('listar_prescricao') }}">Voltar</a>
+{% endblock %}

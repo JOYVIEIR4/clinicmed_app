@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h2>Registrar Administração</h2>
+
+<p><strong>Prescrição:</strong> {{ prescricao.id_prescricao }}</p>
+<p><strong>Paciente:</strong> {{ prescricao.paciente }}</p>
+<p><strong>Medicamento:</strong> {{ prescricao.medicamento }}</p>
+
+<form method="POST">
+    <label>Dose aplicada:</label>
+    <input type="text" name="dose_aplicada" required>
+
+    <label>Data/Hora da aplicação:</label>
+    <input type="datetime-local" name="data_aplicacao" required>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    <a href="{{ url_for('listar_prescricao') }}" class="btn btn-primary">Voltar</a>
+</form>
+
+{% endblock %}
+

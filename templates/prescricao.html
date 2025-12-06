@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Prescrições</h2>
+
+<a href="{{ url_for('adicionar_prescricao') }}" class="btn-cadastro">
+    <i class="bi bi-file-medical-fill"></i> Cadastrar Prescrição
+</a>
+
+
+<table class="tabela-prescricao">
+    <tr>
+        <th>Prescrição</th>
+        <th>Paciente</th>
+        <th>Profissional</th>
+        <th>Medicamento</th>
+        <th>Posologia</th>
+        <th>Inicio da Prescrição</th>
+        <th>Fim da Prescrição</th>
+        <th>Observação</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for p in prescricao %}
+    <tr>
+        <td>{{ p.id_prescricao }}</td>
+        <td>{{ p.nome }}</td>
+        <td>{{ p.nome_profissional }}</td>
+        <td>{{ p.medicamento_nome}}</td>
+        <td>{{ p.dosagem_prescricao }}</td>
+        <td>{{ p.dt_inicio_prescricao.strftime('%d/%m/%Y') }}</td>
+        <td>{{ p.dt_fim_prescricao.strftime('%d/%m/%Y') }}</td>
+        <td>{{ p.observacoes }}</td>
+        <td>
+        
+        <div class="acoes-botoes">
+            <a href="{{ url_for('add_administracao', id=p.id_prescricao) }}" 
+                class="btn btn-success btn-sm">
+                Administrar
+            </a>
+           <a href="{{ url_for('historico_administracao', id_prescricao=p.id_prescricao) }}" 
+              class="btn btn-info btn-sm">
+                Histórico
+           </a>
+        </div>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+

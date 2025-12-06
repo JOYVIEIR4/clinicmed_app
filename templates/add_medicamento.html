@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Cadastrar Medicamento</h2>
+
+<form method="POST">
+    Nome: <input type="text" name="nome" required><br><br>
+    Via: <input type="text" name="via_administracao"><br><br>
+    Descricao: <input type="text" name="desc_medicamento"><br><br>
+
+    <button type="submit">Salvar</button>
+</form>
+
+<a href="{{ url_for('listar_medicamento') }}">Voltar</a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Profissionais</h2>
+
+<a href="{{ url_for('adicionar_profissional') }}" class="btn-cadastro">
+    <i class="bi bi-person-workspace"></i>
+    Cadastrar Profissional
+</a>
+
+
+<table class="tabela-prescricao">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ações</th>
+    </tr>
+
+    {% for p in profissional %}
+    <tr>
+        <td>{{ p.id_profissional }}</td>
+        <td>{{ p.nome_profissional }}</td>
+        <td>
+
+            <!-- Editar -->
+            <a href="{{ url_for('edit_profissional', id=p.id_profissional) }}" class="btn btn-edit">
+                Editar <i class="bi bi-clipboard-plus"></i>
+            </a>
+
+            <!-- Excluir -->
+            <form action="{{ url_for('deletar_profissional', id=p.id_profissional) }}" 
+                  method="POST" style="display:inline;">
+                <button class="btn btn-danger"
+                    onclick="return confirm('Excluir este profissional?')">
+                    Excluir <i class="bi bi-trash"></i>
+                </button>
+            </form>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
