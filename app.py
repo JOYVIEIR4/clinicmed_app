@@ -3,12 +3,12 @@ import pymysql.cursors
 import os
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'unesc')
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')
 
 DB_CONFIG = {
-    'host': os.environ.get('DB_HOST', 'localhost'),
-    'user': os.environ.get('DB_USER', 'root'),
-    'password': os.environ.get('DB_PASSWORD', 'quadrangular'),
+    'host': os.environ.get('DB_HOST'),
+    'user': os.environ.get('DB_USER'),
+    'password': os.environ.get('DB_PASSWORD'),
     'db': os.environ.get('DB_NAME', 'clinicmed_db'),
     'charset': 'utf8mb4',
     'cursorclass': pymysql.cursors.DictCursor
